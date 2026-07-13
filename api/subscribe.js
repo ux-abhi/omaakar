@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // Preflight — respond before anything else can fail
+  // Preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).json({ ok: true });
   }
@@ -28,7 +28,6 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Valid email required' });
     }
 
-    // Check env vars exist BEFORE using them
     const apiKey = process.env.RESEND_API_KEY;
     const audienceId = process.env.RESEND_AUDIENCE_ID;
 
@@ -39,44 +38,110 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'RESEND_AUDIENCE_ID is missing in environment variables' });
     }
 
-    // Import resend INSIDE the handler so a load error is catchable
     const { Resend } = await import('resend');
     const resend = new Resend(apiKey);
 
-    // 1. Add to audience
+    // 1. Add contact to the audience
     await resend.contacts.create({
       email,
       audienceId,
       unsubscribed: false,
     });
 
-    // 2. Send welcome email
+    // 2. Send the welcome email
     await resend.emails.send({
-      from: 'Omakar <onboarding@resend.dev>',
+      from: 'Omakar <hello@omakar.com>',
       to: email,
-      subject: "You're on the Omakar waitlist",
+      subject: "You're on the list, welcome to Omakar",
       html: `
-        <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:40px 24px;background:#FAF4E8;text-align:center;">
-          <p style="font-size:48px;margin:0 0 16px;">&#2384;</p>
-          <h1 style="font-size:26px;color:#2E2419;margin:0 0 10px;">You're on the waitlist.</h1>
-          <p style="font-size:16px;color:#5C5142;margin:0 0 32px;">Your daily darshan is coming soon.</p>
-          <div style="background:#fff;border-radius:16px;padding:28px 32px;text-align:left;">
-            <p style="font-size:15px;color:#2E2419;line-height:1.7;margin:0 0 14px;">
-              We're building Omakar — a live darshan and daily puja app that brings the temple to you, every single morning.
-            </p>
-            <p style="font-size:15px;color:#5C5142;line-height:1.7;margin:0;">
-              You'll be the first to know when we go live. Early members get first access.
-            </p>
-          </div>
-          <p style="font-size:13px;color:#B8892E;margin:24px 0 0;">Omakar &middot; Your daily darshan.</p>
-        </div>
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+        </head>
+        <body style="margin:0;padding:0;background:#FAF4E8;font-family:Georgia,'Times New Roman',serif;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#FAF4E8;">
+            <tr>
+              <td align="center" style="padding:48px 24px;">
+                <table width="520" cellpadding="0" cellspacing="0" style="max-width:520px;width:100%;">
+
+                  <!-- OM -->
+                  <tr>
+                    <td align="center" style="padding-bottom:20px;">
+                      <span style="font-size:44px;color:#B8892E;">&#2384;</span>
+                    </td>
+                  </tr>
+
+                  <!-- Card -->
+                  <tr>
+                    <td style="background:#FFFFFF;border-radius:18px;padding:40px 36px;">
+
+                      <p style="margin:0 0 22px;font-size:17px;line-height:1.7;color:#2E2419;">
+                        Namaste,
+                      </p>
+
+                      <p style="margin:0 0 20px;font-size:15.5px;line-height:1.8;color:#3D3427;">
+                        Thank you for joining the Omakar waitlist. You've just taken the first step toward carrying your temple with you, wherever you are.
+                      </p>
+
+                      <p style="margin:0 0 20px;font-size:15.5px;line-height:1.8;color:#3D3427;">
+                        Omakar started with a simple belief: that darshan shouldn't depend on distance, and that devotion deserves a home of its own online, not lost between reels and notifications. We're building Omakar so you can join live darshan and aarti, and have pujas performed in your name, in a temple near you, with the same faith and care you'd bring in person.
+                      </p>
+
+                      <p style="margin:0 0 20px;font-size:15.5px;line-height:1.8;color:#3D3427;">
+                        We're currently working closely with our first temple partner to get every detail right before opening things up more widely. As one of our early members, you'll be the first to know the moment we go live, and the first to get access.
+                      </p>
+
+                      <p style="margin:0 0 24px;font-size:15.5px;line-height:1.8;color:#3D3427;">
+                        In the meantime, join our WhatsApp channel for aarti timings, temple stories, and updates as we get closer to launch:
+                      </p>
+
+                      <!-- WhatsApp button -->
+                      <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
+                        <tr>
+                          <td style="border-radius:10px;background:#DD7A2E;">
+                            <a href="WHATSAPP_CHANNEL_LINK"
+                               style="display:inline-block;padding:13px 26px;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#FFFFFF;text-decoration:none;border-radius:10px;">
+                              Join our WhatsApp Channel
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+
+                      <p style="margin:0 0 6px;font-size:15.5px;line-height:1.8;color:#3D3427;">
+                        We're grateful to have you with us from the very beginning.
+                      </p>
+
+                      <p style="margin:22px 0 0;font-size:15.5px;line-height:1.7;color:#2E2419;">
+                        With gratitude,<br>
+                        <strong>The Omakar Team</strong>
+                      </p>
+
+                    </td>
+                  </tr>
+
+                  <!-- Footer -->
+                  <tr>
+                    <td align="center" style="padding-top:22px;">
+                      <p style="margin:0;font-size:12px;color:#B8892E;letter-spacing:0.04em;font-family:Arial,sans-serif;">
+                        &#2384; Omakar &middot; Your daily darshan.
+                      </p>
+                    </td>
+                  </tr>
+
+                </table>
+              </td>
+            </tr>
+          </table>
+        </body>
+        </html>
       `,
     });
 
     return res.status(200).json({ ok: true });
 
   } catch (error) {
-    // Return the REAL error so we can see it
     return res.status(500).json({
       error: 'Function failed',
       detail: error.message || String(error)
