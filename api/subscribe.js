@@ -101,7 +101,7 @@ export default async function handler(req, res) {
                       <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
                         <tr>
                           <td style="border-radius:10px;background:#DD7A2E;">
-                            <a href="WHATSAPP_CHANNEL_LINK"
+                            <a href="https://chat.whatsapp.com/Hsro096RlZlEGUfFGcmfRe"
                                style="display:inline-block;padding:13px 26px;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#FFFFFF;text-decoration:none;border-radius:10px;">
                               Join our WhatsApp Channel
                             </a>
