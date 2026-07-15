@@ -65,7 +65,7 @@ export default async function handler(req, res) {
 
                   <!-- ===== TOP BANNER ===== -->
                   <tr>
-                    <td style="background:#1A3A6B;border-radius:14px 14px 0 0;padding:28px 24px;">
+                    <td style="background:#FFFFFF;border-radius:14px 14px 0 0;padding:28px 24px;">
                       <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                           <td align="center">
