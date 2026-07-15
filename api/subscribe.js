@@ -141,7 +141,7 @@ export default async function handler(req, res) {
                             <br>
                             <a href="INSTAGRAM_LINK" style="color:#1A3A6B;text-decoration:none;font-family:Arial,sans-serif;font-size:12px;margin:0 8px;">Instagram</a>
                             <span style="color:#C9BB9E;">&bull;</span>
-                            <a href="WHATSAPP_CHANNEL_LINK" style="color:#1A3A6B;text-decoration:none;font-family:Arial,sans-serif;font-size:12px;margin:0 8px;">WhatsApp</a>
+                            <a href="https://chat.whatsapp.com/Hsro096RlZlEGUfFGcmfRe" style="color:#1A3A6B;text-decoration:none;font-family:Arial,sans-serif;font-size:12px;margin:0 8px;">WhatsApp</a>
                           </td>
                         </tr>
                         <tr>
@@ -155,7 +155,7 @@ export default async function handler(req, res) {
                             <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;color:#B3A788;">
                               <a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color:#B3A788;text-decoration:underline;">Unsubscribe</a>
                               &nbsp;&middot;&nbsp;
-                              <a href="PRIVACY_POLICY_LINK" style="color:#B3A788;text-decoration:underline;">Privacy Policy</a>
+                              <a href="https://omakar.framer.website/privacy-policy" style="color:#B3A788;text-decoration:underline;">Privacy Policy</a>
                             </p>
                           </td>
                         </tr>
