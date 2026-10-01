@@ -5,6 +5,8 @@ export const LINKS = {
   terms: 'https://omakar.com/terms-of-use',
   privacy: 'https://omakar.com/privacy-policy',
   logo: 'https://omaakar.vercel.app/omakar.png',
+  liveDarshanImage: 'https://omaakar.vercel.app/live-darshan.jpg',
+  beginJourneyImage: 'https://omaakar.vercel.app/begin-journey.jpg',
 };
 
 export const SUBJECT = "You're on the Omakar waitlist";
@@ -111,6 +113,12 @@ export function renderWelcomeHtml({ unsubscribeUrl }) {
           </tr>
 
           <tr>
+            <td class="px" style="padding:0 40px 30px;">
+              <img src="${LINKS.liveDarshanImage}" width="480" alt="Live aarti from Kashi Vishwanath streaming in the Omakar app" style="display:block;width:100%;max-width:480px;height:auto;border:0;outline:none;border-radius:14px;">
+            </td>
+          </tr>
+
+          <tr>
             <td class="px" style="padding:0 40px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-top:1px solid ${C.line};font-size:0;line-height:0;">&nbsp;</td></tr></table>
             </td>
@@ -143,9 +151,14 @@ export function renderWelcomeHtml({ unsubscribeUrl }) {
 
           <!-- What happens next -->
           <tr>
+            <td class="px" style="padding:28px 40px 0;">
+              <img src="${LINKS.beginJourneyImage}" width="480" alt="Begin your journey in the Omakar app" style="display:block;width:100%;max-width:480px;height:auto;border:0;outline:none;border-radius:14px;">
+            </td>
+          </tr>
+          <tr>
             <td class="px" style="padding:28px 40px 0;font-family:${SANS};font-size:15.5px;line-height:1.75;color:${C.body};">
               <p style="margin:0 0 18px;">We're working closely with our first temple partner to get every detail right. As an early member, you'll be the first to know when we go live, and the first to get access.</p>
-              <p style="margin:0;">Until then, join our WhatsApp channel for aarti timings, temple stories and launch updates.</p>
+              <p style="margin:0;">Until then, join our WhatsApp community for aarti timings, temple stories and launch updates.</p>
             </td>
           </tr>
 
@@ -155,7 +168,7 @@ export function renderWelcomeHtml({ unsubscribeUrl }) {
               <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td align="center" bgcolor="${C.button}" style="border-radius:12px;background:${C.button};">
-                    <a href="${LINKS.whatsapp}" target="_blank" style="display:inline-block;padding:15px 34px;font-family:${SANS};font-size:15px;font-weight:bold;color:#FFFFFF;text-decoration:none;border-radius:12px;">Join our WhatsApp Channel &rarr;</a>
+                    <a href="${LINKS.whatsapp}" target="_blank" style="display:inline-block;padding:15px 34px;font-family:${SANS};font-size:15px;font-weight:bold;color:#FFFFFF;text-decoration:none;border-radius:12px;">Join our WhatsApp Community &rarr;</a>
                   </td>
                 </tr>
               </table>
@@ -176,7 +189,7 @@ export function renderWelcomeHtml({ unsubscribeUrl }) {
               <p style="margin:0 0 20px;font-size:13.5px;">
                 <a href="${LINKS.instagram}" style="color:${C.button};font-weight:bold;text-decoration:none;">Instagram</a>
                 <span style="color:${C.line};">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                <a href="${LINKS.whatsapp}" style="color:${C.button};font-weight:bold;text-decoration:none;">WhatsApp</a>
+                <a href="${LINKS.whatsapp}" style="color:${C.button};font-weight:bold;text-decoration:none;">WhatsApp Community</a>
               </p>
               <p style="margin:0 0 6px;font-size:12px;line-height:1.6;color:${C.muted};">You're receiving this because you joined the Omakar waitlist at <a href="${LINKS.site}" style="color:${C.muted};text-decoration:underline;">omakar.com</a>.</p>
               <p style="margin:0 0 14px;font-size:12px;line-height:1.6;color:${C.muted};">Bedrock Retail LLP &middot; Bangalore, India</p>
@@ -217,13 +230,14 @@ ${features}
 
 We're working closely with our first temple partner to get every detail right. As an early member, you'll be the first to know when we go live, and the first to get access.
 
-Until then, join our WhatsApp channel for aarti timings, temple stories and launch updates:
+Until then, join our WhatsApp community for aarti timings, temple stories and launch updates:
 ${LINKS.whatsapp}
 
 With gratitude,
 The Omakar Team
 
 Instagram: ${LINKS.instagram}
+WhatsApp Community: ${LINKS.whatsapp}
 Terms of Use: ${LINKS.terms}
 Privacy Policy: ${LINKS.privacy}
 Unsubscribe: ${unsubscribeUrl}
