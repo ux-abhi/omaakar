@@ -139,7 +139,7 @@ export default async function handler(req, res) {
                               Follow our journey
                             </span>
                             <br>
-                            <a href="INSTAGRAM_LINK" style="color:#1A3A6B;text-decoration:none;font-family:Arial,sans-serif;font-size:12px;margin:0 8px;">Instagram</a>
+                            <a href="https://www.instagram.com/omakar.app?stkn=NWMxYmdkcnNqN24y" style="color:#1A3A6B;text-decoration:none;font-family:Arial,sans-serif;font-size:12px;margin:0 8px;">Instagram</a>
                             <span style="color:#C9BB9E;">&bull;</span>
                             <a href="https://chat.whatsapp.com/Hsro096RlZlEGUfFGcmfRe" style="color:#1A3A6B;text-decoration:none;font-family:Arial,sans-serif;font-size:12px;margin:0 8px;">WhatsApp</a>
                           </td>
