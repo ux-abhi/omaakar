@@ -55,7 +55,14 @@ export default async function handler(req, res) {
       console.error('Resend contacts.create failed', contact.error);
       return res.status(502).json({ error: 'Could not add you to the waitlist, please try again' });
     }
-
+try {
+  await saveToGoogleSheets(email);
+} catch (error) {
+  console.error('Google Sheets save failed:', error.message);
+  return res.status(502).json({
+    error: 'Could not complete your signup. Please try again.',
+  });
+}
     const unsubscribe = unsubscribeUrl(baseUrl(req), email);
 
     const sent = await resend.emails.send({
